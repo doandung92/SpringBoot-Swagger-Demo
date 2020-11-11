@@ -1,5 +1,8 @@
 package com.evolyb.swagger;
 
+import com.evolyb.swagger.model.Student;
+import com.evolyb.swagger.repository.StudentRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -46,5 +49,14 @@ public class SwaggerApplication {
                 Collections.emptyList()
         );
     }
+    // Demo Database
+    @Bean
+    CommandLineRunner runner(StudentRepository studentRepository){
+        return args -> {
+            studentRepository.save(new Student("Evolyb","C0620K1"));
+            studentRepository.save(new Student("JavaHater","C0620K1"));
+        };
+    }
+
 }
 
